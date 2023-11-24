@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+        <body style="background-color: red;">
+   
+   <h1>Calculator</h1>
+    Please Enter The First Number:<input id="first" type="text" value="10"/> <br/><br/>
+    Please Enter The Second Number:<input id="second" type="text" value="20"/> 
+    <br/><br/>
+    <button onclick="sum()">+</button>
+    <button onclick="sub()">-</button>
+    <button onclick="mul()">*</button>
+    <button onclick="div()">/</button><br/><br/>
+    Ans:<span id="ans">0</span>
+
+
+        </body>
+</html>
+
+<script>
+    let input1=document.getElementById("first");
+     let input2=document.getElementById("second");
+     let ansId=document.getElementById("ans");
+
+     const sum=()=>
+     {
+        var a=parseInt(input1.value);
+        var b=parseInt(input2.value);
+        ansId.innerText=a+b;
+     }
+     let sub=()=>   //Arrow Function
+     {
+        let a=parseInt(input1.value);
+        let b=parseInt(input2.value);
+        ansId.innerText=a-b;
+     }
+     function mul()
+     {
+        let a=parseInt(input1.value);
+        let b=parseInt(input2.value);
+        ansId.innerText=a*b;
+     }
+
+     function div()
+     {
+        let a=parseInt(input1.value);
+        let b=parseInt(input2.value);
+        ansId.innerText=a/b;
+     }
+</script>
