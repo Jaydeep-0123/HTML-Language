@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inline</title>
+</head>
+<body style="background-color: chartreuse;">
+   
+    <h1>Table</h1>
+   Please Enter a Number <input  id="input" type="text" value="10" style="width: 18px;" /></br>
+    <button onclick="showTable()"> sum </button>
+    <spam id="table" style="width: 10px;"></spam>
+
+</body>
+</html>
+
+<script>
+
+  var  input=document.getElementById("input")  //For Input
+  var Table=document.getElementById("table");  //For Spam
+
+  //function showTable()
+  const showTable=()=>  //Arrow Function
+  {
+    let n=parseInt(input.value);
+    var s="";
+    for(i=1;i<=n;i++)
+    {   
+      for(j=1;j<=10;j++)
+      {
+        let color=getRandomColor();
+      s+=`<div style="background-color :${color};
+      margin-top:2px; width="100px">${i*j}</div>`;
+      }
+    
+      
+    }
+   // table.innerText = s;   //yah text ke from me print karega
+    table.innerHTML=s;     //yah html ke from me print karega
+  }
+  function getRandomColor()
+  {
+    var letters='0123456789ABCDEF';
+    var color='#';
+    for(var i=0;i<6;i++)
+    {
+        color = color+letters[Math.floor(Math.random()*16)];
+
+    }
+    return color;
+  }
+
+</script>
