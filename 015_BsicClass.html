@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div-tag{
+            background-color: aliceblue;
+            color: rebeccapurple;
+            font-size: 25px;
+            margin: 8px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="div-tag" id="div1">frist div tag</div>
+    <div class="div-tag" id="div2">second div tag</div>
+    <div class="div-tag" id="div3">third div tag</div>
+    <div class="div-tag" id="div4">fourth div tag</div>
+    <div class="div-tag" id="div5">fifth div tag</div>
+    <div class="div-tag" id="div6">sixth div tag</div>
+    <div class="div-tag "id="div7">seven div tag</div>
+    <div class="div-tag" id="div8">eigth div tag</div>
+   <center>
+</body>
+</html>
+<script>
+var divId = document.getElementById("div1");
+
+ divId.addEventListener("mouseenter",()=>
+ {
+    alert("hello");
+ });
+
+ var div7Id=document.getElementById("div7");
+div7Id.addEventListener("mouseover", ()=>
+{
+     alert("jaydeep");
+});
+
+var div8Id=document.getElementById("div8");
+div8Id.addEventListener("mouseout",function fun()
+{
+   alert("Rajput");
+});
+
+var div5Id=document.getElementById("div5");
+div5Id.addEventListener("click",function()
+{
+   // alert(div5Id.innerText); //yah div5 ka text print karega;
+    alert("kuldeep");
+});
+
+
+var div2Id=document.getElementById("div2");
+div2Id.addEventListener("click", fun)
+
+function fun(){
+    alert("hello");
+}
+
+</script>
