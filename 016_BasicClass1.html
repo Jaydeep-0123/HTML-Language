@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .div-tag{
+            background-color: aliceblue;
+            color: rebeccapurple;
+            font-size: 25px;
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <div class="div-tag" id="div1">frist div tag</div>
+    <div class="div-tag" id="div2">second div tag</div>
+    <div class="div-tag" id="div3">third div tag</div>
+    <div class="div-tag" id="div4">fourth div tag</div>
+    <div class="div-tag" id="div5">fifth div tag</div>
+    <div class="div-tag" id="div6">sixth div tag</div>
+    <div class="div-tag "id="div7">seven div tag</div>
+    <div class="div-tag" id="div8">eigth div tag</div>
+   <center>
+</body>
+</html>
+<script>
+    var divs=document.getElementsByClassName("div-tag");
+    for(i=0;i<divs.length;i++)
+    {
+        //divs[i].addEventListener("click",function()
+        divs[i].addEventListener("mouseenter",function()   
+      {
+         console.log(this.innerHTML);
+      })
+    }
+</script>
