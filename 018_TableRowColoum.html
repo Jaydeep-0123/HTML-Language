@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <table>
+        <tr>
+            <td>
+                <div class="div-tag" id="div1"> </div>
+            </td>
+            <td>
+                <div class="div-tag" id="div2"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="div-tag" ></div>
+            </td>
+            <td>
+                <div class="div-tag"></div>
+            </td>
+        </tr>
+    </table>
+    <style>
+        .div-tag{
+            background-color: aliceblue;
+            color: rebeccapurple;
+            font-size: 25px;
+            margin: 2px;
+            width: 150px;
+            height: 150px;
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    var color=["red","yellow","black","blue"]
+    var divs=document.getElementsByClassName("div-tag"); 
+    var temp = "";
+
+    for(i=0;i<divs.length;i++)
+    {
+        divs[i].style.backgroundColor =color[i];
+        divs[i].addEventListener("mouseout",function()   
+      {
+        let tempcolor= "";
+        tempcolor=this.style.backgroundColor;
+         this.style.backgroundColor=temp;
+         temp = tempcolor;
+      })
+    }
+</script>
