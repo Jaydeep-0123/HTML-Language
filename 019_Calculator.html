@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        .contener{
+            background-color: lightgrey;
+            width: 250px;
+            height: 300px;
+            margin-left: 50px;
+            margin-top: 15px;
+            border: 1px solid;
+
+        }
+        .screen{
+            background-color: aquamarine;
+            height: 50px;
+            text-align: right;
+            padding: 5px;
+
+        }
+        .screen-value{
+            margin: 3px;
+        }
+        .key{
+            height: 37px;
+            width: 52px;
+            margin: 3px;
+            margin-left: 3px;
+            background-color: darkgreen;
+        }
+        .keyped{
+           background-color: blueviolet;
+           
+        }
+    </style>
+</head>
+<body>
+   <div class="contener">
+    <div class="screen">
+        <div>
+            
+            <span class="screen-value" id="second-value"></span>
+            <span class="screen-value" id="operator"></span>
+            
+        </div>
+    
+      <div class="screen-value" id="first-value">0</div>
+    </div>
+    
+      <div class="keyped">
+        
+        <table>
+            <tr>
+                <td>
+                    <button class="key">ON</button>
+                </td>
+            <td>
+                <button class="key" onclick="allClear()">c</button>
+            </td>
+            <td>
+                <button class="key" onclick="removeDigit()"><=</button>
+            </td>
+            <td>
+                <button class="key" onclick="operator('+')">+</button>
+            </td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="key" onclick="inputNumber('1')">1</button>
+                </td>
+                <td>
+                    <button class="key" onclick="inputNumber('2')">2</button>
+                </td>
+                <td>
+                    <button class="key" onclick="inputNumber('3')">3</button>
+                </td>
+                <td>
+                    <button class="key" onclick="operator('-')">-</button>
+                </td> 
+            </tr>
+            <tr>
+                <td>
+                    <button class="key" onclick="inputNumber('4')">4</button>
+                </td> 
+                <td>
+                    <button class="key" onclick="inputNumber('5')">5</button>
+                </td> 
+                <td>
+                    <button class="key" onclick="inputNumber('6')">6</button>
+                </td> 
+                <td>
+                    <button class="key" onclick="operator('*')">*</button>
+                </td>  
+            </tr>
+            <tr>
+                <td>
+                    <button class="key" onclick="inputNumber('7')">7</button>
+                </td>  
+                <td>
+                    <button class="key" onclick="inputNumber('8')">8</button>
+                </td>  
+                <td>
+                    <button class="key" onclick="inputNumber('9')">9</button>
+                </td>  
+                <td>
+                    <button class="key" onclick="operator('/')">/</button>
+                </td>  
+            </tr>
+            <tr>
+                <td>
+                    <button class="key" onclick="inputNumber('00')">00</button>
+                </td>  
+                <td>
+                    <button class="key" onclick="inputNumber('0')">0</button>
+                </td>  
+                <td>
+                    <button class="key">.</button>
+                </td>  
+                <td>
+                    <button class="key" onclick="equal()">=</button>
+                </td>  
+            </tr>
+
+        </table>
+      </div>
+    </div>
+   
+</body>
+</html>
+<script>
+ var first_value=document.getElementById('first-value');
+ var second_value=document.getElementById('second-value');
+ var operatorId=document.getElementById('operator');
+
+ const allClear=()=>
+ {
+    first_value.innerText='0';
+    second_value.innerText='';
+    operatorId.innerText='';
+ }
+
+ function inputNumber(number)
+ {
+    
+    if(first_value.innerText=='0')
+       first_value.innerText=number;
+    else{
+        first_value.innerText=first_value.innerText+number;
+    }
+ }
+ const removeDigit=()=>
+{
+    let val=first_value.innerText;
+    if(val.length==1)
+       first_value.innerText='0';
+    else if(first_value.innerText=='0')
+    {
+        first_value.innerText='0';
+    }
+        
+    else{
+        first_value.innerText=val.substring(0,val.length-1);
+    }
+} 
+function operator(optr)
+{
+    second_value.innerText=first_value.innerText;
+    operatorId.innerText=optr;
+    first_value.innerText='0';
+}
+function calculate(val1,val2,optr)
+{
+    let n1=parseInt(val1);
+   
+    let n2=parseInt(val2);
+   
+    let ans=0;
+   
+    if(optr=='+')
+    {
+        
+        ans = n1+n2;
+    }
+    else if(optr=='-')
+    {
+        ans=n1-n2;
+    }
+    else if(optr=='*')
+    {
+        ans=n1*n2;
+    }
+    else if(optr=='/')
+    {
+        ans=n1/n2;
+    }
+    allClear();
+    first_value.innerText=ans;
+}
+function equal()
+{
+  
+   if(first_value.innerText!='0' && second_value.innerText!="")
+   {
+    
+      calculate(first_value.innerText,second_value.innerText,operatorId.innerText);
+      
+   }
+}
+
+</script>
