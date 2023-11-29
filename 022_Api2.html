@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Api-2</title>
+<style>
+      .navBar{
+        float: right;
+        margin-top:-40px ;
+      }
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet"> 
+<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/ font-awesome.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js /bootstrap.bundle.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+</head>
+</body>
+<div id="container">
+    <div class="px-4 px-lg-0">
+    <!-- For demo purpose -->
+    <!-- End -->
+     <div class="pb-5">
+    <div class="container">
+    <section style="background-color: #eee;"> 
+            <div class="container py-5">
+                <div class="row navBar" ><a href="021_Api1.html">Cart &nbsp</a>
+                 <div class="col-1 test rounded-circle" style="background-color : blue;" id='cart'>
+                    
+                 </div>
+               </div>
+              <div class="row mb-4" id="list">
+                </div>
+              </div>
+           </section>
+       </div>
+        <!-- End -->
+        </div>
+      </div>
+     </div>
+    </div>
+   </div>
+</div>
+ </body>
+ </html>
+    
+ <script>
+       const divId = document.getElementById('list');
+       const cartId= document.getElementById("cart");
+       async function getProduct() {
+       let result = await fetch("https://dummyjson.com/products");
+       if(result.status==404)
+       {
+        list.innerHTML=`<h2>product not found<h2/>`
+       }
+       else{
+
+
+       result = await result.json();
+        console.log(result);
+       const len = result.products.length;
+       let cart ="";
+       for(i=0;i<len;i++)
+       {
+        let price = result.products[i].price;
+        let discountPer = result.products[i].discountPercentage; 
+        let discountAmount =price*discountPer/100; 
+        let afterDiscount =price-discountAmount;
+             if(i%4==0)
+               { 
+                   cart+= `</div> <div class="row mb-4">`;
+                } 
+                    cart+=`<div class="col-md-12 col-lg-3 mb-4 mb-lg-0"> 
+                       <div class="card">
+                 <img height="160" src="${result.products[i].thumbnail}"
+
+            class="card-img-top" alt="Laptop"/>
+
+            <div class="card-body">
+             <div class="d-flex justify-content-between">
+                <p class="small"><a href="#!" class="text-muted">${result.products[i].category}</a></p>
+                 <p class="small text-danger"> <s>*${result.products[i].price}</s></p>
+</div>
+<div class="d-flex justify-content-between mb-3"> <h5 class="mb-0">${result.products[i].title}</h5> <h5 class="text-dark mb-0">${parseInt(afterDiscount+"")}</h5>
+
+</div>
+
+<div class="d-flex justify-content-between mb-2"> <p class="text-muted mb-0">Available: <span class="fw-bold">${result.products[i].stock} </span></p>
+    <div class="p-1 w-19 text-justify rounded-pillbg-success">
+     ${result.products[i].rating} 
+    <span class="fa fa-star checked"></span>
+  </div>
+  </div>
+  <button class="btn btn-primary" onclick="addItem(${result.products[i].id},'${result.products[i].title}',
+  ${parseInt(afterDiscount+"")},'${result.products[i].category}','${result.products[i].thumbnail}')">Add To Cart</button> 
+  </div>
+</div>
+</div>` ;
+       }
+       list.innerHTML = cart;
+      }
+      //console.log(cart);
+    }
+    getProduct();
+     showCar();
+   function addItem(id ,name,price,cat,img){
+    let found =false;
+    let cart = JSON.parse(localStorage.getItem('items'))
+    if(cart==null)
+        cart=[];
+    for (i=0 ;i < cart.length ;i++) {
+        
+        if(cart[i].id===id)
+        {
+            cart[i].qty =cart[i].qty + 1;
+            found = true;
+        }
+    }
+    if(found===false)
+        cart.push({"id":id,"name":name,"price":price,"qty":1,'category':cat,'image':img});
+
+    localStorage.setItem('items',JSON.stringify(cart));
+    cartId.innerText = cart.length;
+   }
+    function showCar() {
+    let cart =JSON.parse(localStorage.getItem('items'));
+    if(cart!==null)
+    {
+        cartId.innerText=cart.length;
+   }
+  }
+    </script>
