@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #innertext{
+            background-color: chartreuse;
+            color: rgb(209, 0, 178);
+            padding: 10px;
+            margin: 4px;
+        }
+        #innerhtml{
+            background-color: darkblue;
+            color: yellow;
+            padding: 10px;
+            margin: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+    <div> This is a InnerText</div>
+    <div> This is a htmlText</div>
+    
+</div>
+</body>
+</html>
+<script>
+    let innertextId=document.querySelector('#container').innerText;
+    let innerhtmlId=document.querySelector('#container').innerHTML;
+    
+
+    console.log(innertextId);
+    console.log(innerhtmlId);
+</script>
