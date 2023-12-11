@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: rgb(192, 255, 192);">
+    <h1 id="heding">DOM Apna College Tutoirial</h1>
+    <h4 class="heding2">JavaScript</h4>
+    <h6 id="heding-3">I am Learning JavaScript</h6>
+    <p class="heding-4">Let's Learn About Dom</p>
+    <button class="heading5">Click me</button>
+</body>
+</html>
+<script>
+
+    let heading=document.getElementById('heding');
+    //console.log(heding);
+   // console.dir(heading);
+    //console.dir(document.body);
+
+    let heding2=document.getElementsByClassName('heding2');
+   // console.log(heding2)
+    // console.dir(heding2);
+
+    let tag=document.getElementsByTagName("p");
+   // console.log(tag);
+   // console.dir(tag);
+    
+
+    let elements=document.querySelector("p");
+    //console.dir(elements);
+
+    //proerties=> tagName
+    let firstEle=document.querySelector('.heading5');
+   // console.dir(firstEle);
+   // console.log(firstEle);
+   // console.log(firstEle.tagName);
+</script>
